@@ -1,0 +1,19 @@
+.Header {
+    text-align: center;
+    font-weight: bold ;
+    font-size: 2rem;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:aliceblue;
+    animation: moveHorizontal 20s linear infinite;
+    text-shadow: 0 0 10px #00E6E6, 0 0 20px #00E6E6, 0 0 30px #00E6E6, 0 0 40px #00E6E6;
+
+}
+.SubHeader {
+    font-style: italic;
+    font-family:fantasy;
+}
+@keyframes moveHorizontal {
+    0% { transform: translateX(-5%); }
+    50% { transform: translateX(5%); }
+    100% { transform: translateX(-5%); }
+}

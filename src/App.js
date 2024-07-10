@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Logo from './Logo';
+import Login from './Login';
+import Mail from './Mail';
+import {useState} from 'react';
+import Token from './GetToken';
 
 function App() {
+  const [emails, setEmails] = useState([]);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Logo />
       </header>
+      <Login> </Login>
+      <Token> </Token>
+      <Mail/>
     </div>
   );
 }
