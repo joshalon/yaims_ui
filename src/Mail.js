@@ -4,15 +4,16 @@ import Login from "./Login";
 
 function Mail() {
   const [emails, setEmails] = useState([]);
+  const [needsLogin, setNeedsLogin] = useState(false);
   const API_BASE_URL = "https://famous-crossing-420503.wl.r.appspot.com"
   const fetchEmails = async () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/get_emails`, { withCredentials: true });
-      setEmails(response.data.emails);
+      setEmails(response.data.messages || []);
     } catch (error) {
       if (error.response && error.response.status === 401) {
         // Not authenticated, prompt for login
-        Login();
+        setNeedsLogin = true;
       } else {
         console.error('Error fetching emails:', error);
       }
@@ -23,10 +24,14 @@ function Mail() {
     fetchEmails();
   }, []);
 
+  if (needsLogin) {
+    return <Login />;
+  }
+
   return (
     <div>
       <h1>My Emails</h1>
-      {emails.length > 0 ? (
+      {emails && emails.length > 0 ? (
         <ul>
           {emails.map((email, index) => (
             <li key={index}>{email}</li>
